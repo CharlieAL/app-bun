@@ -13,6 +13,7 @@ export const authRoute = new Hono()
   .get('/callback', async (c) => {
     // get called eveyr time we login or register
     const url = new URL(c.req.url)
+
     await kindeClient.handleRedirectToApp(sessionManager, url)
     return c.redirect('/')
   })
@@ -20,11 +21,7 @@ export const authRoute = new Hono()
     const logoutUrl = await kindeClient.logout(sessionManager)
     return c.redirect(logoutUrl.toString())
   })
-  .get('/me', async (c) => {
-    const isAuthenticated = await kindeClient.isAuthenticated(sessionManager)
-    return c.json({ isAuthenticated })
-  })
-  .get('/user', getUser, async (c) => {
+  .get('/me', getUser, async (c) => {
     const user = c.var.user
     return c.json({ user })
   })

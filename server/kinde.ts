@@ -4,8 +4,6 @@ import {
   type SessionManager,
   type UserType
 } from '@kinde-oss/kinde-typescript-sdk'
-import { type Context } from 'hono'
-import { getCookie, setCookie, deleteCookie } from 'hono/cookie'
 import { createMiddleware } from 'hono/factory'
 import { z } from 'zod'
 
@@ -36,11 +34,9 @@ let store: Record<string, unknown> = {}
 
 export const sessionManager: SessionManager = {
   async getSessionItem(key: string) {
-    console.log('getting session item', key)
     return store[key]
   },
   async setSessionItem(key: string, value: unknown) {
-    console.log('setting session item', key, value)
     store[key] = value
   },
   async removeSessionItem(key: string) {
@@ -90,7 +86,6 @@ export const getUser = createMiddleware<Env>(async (c, next) => {
   try {
     const manager = sessionManager
     const isAuthenticated = await kindeClient.isAuthenticated(manager)
-    console.log(isAuthenticated, 'caca')
     if (!isAuthenticated) {
       return c.json({ error: 'Unauthorized' }, 401)
     }

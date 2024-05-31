@@ -6,6 +6,14 @@ import { authRoute } from './routes/auth'
 const app = new Hono()
 
 app.use('*', logger())
+app.use('*', (c, next) => {
+  c.res.headers.append(
+    'Accept-CH',
+    'UA, UA-Arch, UA-Platform, UA-Model, UA-Form-Factor'
+  )
+  c.res.headers.append('Permissions-Policy', 'ch-ua-form-factor=*')
+  return next()
+})
 
 const ApiRoutes = app
   .basePath('/api')
