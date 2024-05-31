@@ -1,0 +1,27 @@
+{
+  "version": "6",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1717114195193,
+      "tag": "0000_abandoned_war_machine",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1717116139732,
+      "tag": "0001_mixed_magma",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1717125467103,
+      "tag": "0002_lucky_expediter",
+      "breakpoints": true
+    }
+  ]
+}
