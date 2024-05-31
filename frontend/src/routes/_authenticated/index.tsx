@@ -10,7 +10,7 @@ import {
 import { api } from '@/lib/api'
 import { useQuery } from '@tanstack/react-query'
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/_authenticated/')({
   component: Index
 })
 
@@ -31,17 +31,15 @@ function Index() {
 
   return (
     <>
-      <div className='h-dvh w-full flex justify-center items-center'>
-        <Card className='w-[350px]'>
-          <CardHeader>
-            <CardTitle>Create project</CardTitle>
-            <CardDescription>
-              Deploy your new project in one-click.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>{isLoading ? '...' : data?.total}</CardContent>
-        </Card>
-      </div>
+      <Card className='w-[350px]'>
+        <CardHeader>
+          <CardTitle>Create project</CardTitle>
+          <CardDescription>
+            Deploy your new project in one-click.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>{isLoading ? '...' : data?.total}</CardContent>
+      </Card>
     </>
   )
 }

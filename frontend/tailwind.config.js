@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ['class'],
   content: [
     'index.html',
@@ -74,5 +74,6 @@ module.exports = {
       }
     }
   },
+  // eslint-disable-next-line no-undef
   plugins: [require('tailwindcss-animate')]
 }
