@@ -51,6 +51,8 @@ export const loadingExpenseQueryOptions = queryOptions<{ expense?: Expense }>({
 })
 
 export const deleteExpense = async ({ id }: { id: number }) => {
+  await new Promise((r) => setTimeout(r, 3000))
+  // throw new Error('Failed to delete expense')
   const res = await api.expenses[':id{[0-9]+}'].$delete({
     param: { id: id.toString() }
   })
